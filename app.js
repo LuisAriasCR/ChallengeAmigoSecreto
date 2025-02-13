@@ -6,6 +6,7 @@ let amigos = [];
 
 
 
+// Esta funcion guarda en un array los nombres ingresados, validando si el espacio esta en blanco antes de ejecutar
 function agregarAmigo(){
     
     let imput = document.getElementById("amigo").value;
@@ -15,12 +16,25 @@ function agregarAmigo(){
     alert("Debes ingresar el nombre de tu amigo");
 
     }else{
-        
-        let nombre = document.getElementById("amigo");
+    
+    listaAmigos.innerText="";   
+    let nombre = document.getElementById("amigo").value;   
     amigos.push(nombre);
-    console.log(amigos);
     document.getElementById("amigo").value = "";
 
     }
+    
+    imprimirListaAmigos();
 
+}
+
+function imprimirListaAmigos(){
+    
+    const listaAmigos = document.getElementById('listaAmigos');
+
+    amigos.forEach(amigo => {
+        const li = document.createElement('li');
+        li.textContent = amigo;  // Asigna el valor del amigo al texto del li
+        listaAmigos.appendChild(li);  // Añade el li a la lista
+    });
 }
